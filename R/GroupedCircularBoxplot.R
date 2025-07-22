@@ -40,7 +40,7 @@
 #' @param arrow_width Numeric controlling the width of the arrow drawn pointing to each median. Defaults to `lwd`.
 #' @examples
 #' library(circular)
-#' library(GroupedCircularBoxplot)
+#' library(CircularBoxplots)
 #' set.seed(123)
 #' data <- list(
 #'     x = rvonmises(100, circular(pi), 5),

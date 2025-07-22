@@ -19,7 +19,7 @@ Jamshedpur, India. Data were obtained for over the entire
 2023 year. The list contains two data frames, \code{AMW} and \code{VEJS},
 corresponding to Ames and Jamshedpur, respectively. The Ames data
 were collected every five minutes, while the Jamshedpur data are
-half-hourly.
+hourly.
 }
 \details{
 Each datframe contains three columns, the first corresponding to
