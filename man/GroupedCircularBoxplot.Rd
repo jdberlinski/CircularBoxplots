@@ -86,7 +86,7 @@ Given a named list of circular objects, create a grouped circular boxplot.
 }
 \examples{
 library(circular)
-library(GroupedCircularBoxplot)
+library(CircularBoxplots)
 set.seed(123)
 data <- list(
     x = rvonmises(100, circular(pi), 5),

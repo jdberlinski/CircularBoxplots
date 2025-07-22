@@ -1,4 +1,4 @@
-Package: GroupedCircularBoxplot
+Package: CircularBoxplots
 Title: Grouped Circular Boxplots for Circular Data
 Version: 0.1.0
 Authors@R:
