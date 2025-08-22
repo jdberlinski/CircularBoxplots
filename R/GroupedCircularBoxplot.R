@@ -20,7 +20,7 @@
 #' @param constant Numeric specifying the multiplicative factor determining how far whiskers extend from box. A value of
 #' "optimal" will choose values based on a von Mises distribution (see Buttarazzi et al. 2018)
 #' @param rad_shift Scalar indicating the distance between each boxplot
-#' @param lwd Scalar indicating the width of boxplot lines
+#' @param lwd Scalar indicating the width of boxplot lines, also impacts other lines, relatively
 #' @param plot_cols Vector with the same length as `data_in`, specifying the color of the boxplot
 #' @param line_cols Vector with the same length as `data_in`, specifying the color of the median lines
 #' @param arrow_cols Vector with the same length as `data_in`, specifying the color of the arrows pointing to the
@@ -38,6 +38,9 @@
 #' at fence points will also not be drawn
 #' @param scale_widths Logical, should the width of each boxplot be scaled based on (the square root of) it's distance from the center?
 #' @param arrow_width Numeric controlling the width of the arrow drawn pointing to each median. Defaults to `lwd`.
+#' center_point Logical, should a point be drawn at the center of the grouped circular boxplot
+#' @param cex numerical, the size of the plotting character, also adjusts other characters relatively
+#' @param mex numerical, the size of the character in the margins.
 #' @examples
 #' library(circular)
 #' library(CircularBoxplots)
@@ -74,7 +77,10 @@ GroupedCircularBoxplot <- function(
   template_options = NULL,
   minimal = FALSE,
   scale_widths = FALSE,
-  arrow_width = lwd
+  arrow_width = lwd,
+  center_point = FALSE,
+  cex = 0.5,
+  mex = 1
 ) {
 
   # if only a circular vector is passed as data in, make it a list and don't plot a legend
@@ -254,13 +260,13 @@ GroupedCircularBoxplot <- function(
 
           for (i in seq_along(rad_grid)) {
             if (i < length(rad_grid))
-              plotrix::draw.arc(0, 0, shift + 1, deg1 = rad_grid[i] + 2, deg2 = rad_grid[i + 1] - 2, col = 1, lwd = 2, lty = 1)
+              plotrix::draw.arc(0, 0, shift + 1, deg1 = rad_grid[i] + 2, deg2 = rad_grid[i + 1] - 2, col = 1, lwd = 2*lwd, lty = 1)
             else
-              plotrix::draw.arc(0, 0, shift + 1, deg1 = rad_grid[i] + 2, deg2 = 358, col = 1, lwd = 2, lty = 1)
+              plotrix::draw.arc(0, 0, shift + 1, deg1 = rad_grid[i] + 2, deg2 = 358, col = 1, lwd = 2*lwd, lty = lwd)
           }
           text(
             tmult * circular::circular(lab_coord[, 1]), tmult * circular::circular(lab_coord[, 2]),
-            labels = ax_labels, col = "black", cex = 1
+            labels = ax_labels, col = "black", cex = mex
           )
         }
 
@@ -271,7 +277,7 @@ GroupedCircularBoxplot <- function(
           }
           text(
             tmult * circular::circular(lab_coord[, 1]), tmult * circular::circular(lab_coord[, 2]),
-            labels = ax_labels, col = "burlywood4", cex = 0.6
+            labels = ax_labels, col = "burlywood4", cex = mex
           )
         }
       } else if (template == "custom") {
@@ -297,7 +303,7 @@ GroupedCircularBoxplot <- function(
 
         text(
           tmult * circular::circular(lab_coord[, 1]), tmult * circular::circular(lab_coord[, 2]),
-          labels = ax_labels, col = "black", cex = 1
+          labels = ax_labels, col = "black", cex = mex
         )
 
       } else {
@@ -318,7 +324,7 @@ GroupedCircularBoxplot <- function(
 
         text(
           tmult * circular::circular(lab_coord[,1], units = "radians"), tmult * circular::circular(lab_coord[,2], units = "radians"),
-          labels = ax_labels, cex=1
+          labels = ax_labels, cex=mex
         )
       }
     } else {
@@ -327,7 +333,7 @@ GroupedCircularBoxplot <- function(
 
     ##drawing the plot
     if (H)
-      circular::points.circular(circular::circular(set_1), cex=0.75, start.sep = delta)
+      circular::points.circular(circular::circular(set_1), cex=0.5*cex, x = delta)
 
     # is this bad?
     round_circ <- function(x) circular::rad(round(circular::deg(x))) # round to nearest degree
@@ -485,14 +491,14 @@ GroupedCircularBoxplot <- function(
       } else {
         if (minimal) {
           if (stack)
-            circular::points.circular(faroutvalues, cex=0.5, stack=stack, bins=500, sep=0.1, pch=8, start.sep = delta, col="gray30")
+            circular::points.circular(faroutvalues, cex=0.25*cex, stack=stack, bins=500, sep=0.1, pch=8, start.sep = delta, col="gray30")
           else
-            circular::points.circular(faroutvalues, cex=0.5, stack=stack, pch=8, start.sep = delta, col="gray30")
+            circular::points.circular(faroutvalues, cex=0.25*cex, stack=stack, pch=8, start.sep = delta, col="gray30")
         } else {
           if (stack)
-            circular::points.circular(faroutvalues, cex=0.6, stack=stack, bins=500, sep=0.1, pch=8, start.sep = delta)
+            circular::points.circular(faroutvalues, cex=0.6*cex, stack=stack, bins=500, sep=0.1, pch=8, start.sep = delta)
           else
-            circular::points.circular(faroutvalues, cex=0.6, stack=stack, pch=8, start.sep = delta)
+            circular::points.circular(faroutvalues, cex=0.6*cex, stack=stack, pch=8, start.sep = delta)
         }
       }
     } else {
@@ -588,7 +594,7 @@ GroupedCircularBoxplot <- function(
       plotrix::draw.arc(0,0,1 + delta,wC,QClock,col="gray30",lwd=0.25*lwd, lty=1)
       plotrix::draw.arc(0,0,1 + delta,wA,QAnti,col="gray30",lwd=0.25*lwd, lty=1)
       plotrix::draw.arc(0, 0, 1 + delta, grid[1], grid[2], col=plot_cols[curr_seq], lwd=lwd)
-      circular::points.circular(CTM, cex=0.75, start.sep = delta, col=line_cols[curr_seq])
+      circular::points.circular(CTM, cex=0.25*cex, start.sep = delta, col=line_cols[curr_seq])
     }
 
     gradi <- (as.matrix(circular::deg(data[,1])))
@@ -621,7 +627,8 @@ GroupedCircularBoxplot <- function(
     out$statistics = summaryStatistics
     summary_output[[curr_seq]] <- out
   }
-  points(0,0,pch=21, bg=1,  cex=1.1) # redraw center point, for fun
+  if (center_point) 
+    points(0,0,pch=21, bg=1,  cex=1.1) # redraw center point, for fun
   return(invisible(summary_output))
 
 }
