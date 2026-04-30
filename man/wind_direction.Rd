@@ -8,7 +8,7 @@
 An object of class \code{list} of length 2.
 }
 \source{
-Iowa State University's Iowa Environmental Mesonet \url{https://mesonet.agron.iastate.edu/request/download.phtml}
+Iowa State University's Iowa Environmental Mesonet \url{https://mesonet.agron.iastate.edu/}
 }
 \usage{
 data(wind_direction)
