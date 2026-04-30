@@ -26,7 +26,10 @@ GroupedCircularBoxplot(
   template_options = NULL,
   minimal = FALSE,
   scale_widths = FALSE,
-  arrow_width = lwd
+  arrow_width = lwd,
+  center_point = FALSE,
+  cex = 0.5,
+  mex = 1
 )
 }
 \arguments{
@@ -51,7 +54,7 @@ GroupedCircularBoxplot(
 
 \item{rad_shift}{Scalar indicating the distance between each boxplot}
 
-\item{lwd}{Scalar indicating the width of boxplot lines}
+\item{lwd}{Scalar indicating the width of boxplot lines, also impacts other lines, relatively}
 
 \item{plot_cols}{Vector with the same length as \code{data_in}, specifying the color of the boxplot}
 
@@ -80,6 +83,12 @@ at fence points will also not be drawn}
 \item{scale_widths}{Logical, should the width of each boxplot be scaled based on (the square root of) it's distance from the center?}
 
 \item{arrow_width}{Numeric controlling the width of the arrow drawn pointing to each median. Defaults to \code{lwd}.}
+
+\item{center_point}{Logical, should a point be drawn at the center of the grouped circular boxplot}
+
+\item{cex}{numerical, the size of the plotting character, also adjusts other characters relatively}
+
+\item{mex}{numerical, the size of the character in the margins.}
 }
 \description{
 Given a named list of circular objects, create a grouped circular boxplot.
