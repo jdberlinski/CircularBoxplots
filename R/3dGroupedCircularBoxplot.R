@@ -42,10 +42,12 @@ draw.arc.xy <- function(x=1, y=NULL, radius=1, angle1=deg1*pi/180,
   return(list(n = n, x1 = p1x, y1 = p1y, x2 = p2x, y2 = p2y))
 }
 
-draw.radial.line.xy <- function(start, end, center=c(0, 0), angle=0, deg=NA, expand=FALSE)
+draw.radial.line.xy <- function(start, end, center=c(0, 0), angle=0, deg=NA, expand=FALSE, lwd=NA)
 {
   if (is.na(deg))
     deg <- angle*180/pi
+  if (all(is.na(lwd)))
+    lwd <- par("lwd")
   angle <- deg*pi/180
   cosang <- cos(angle)
   sinang <- sin(angle)
