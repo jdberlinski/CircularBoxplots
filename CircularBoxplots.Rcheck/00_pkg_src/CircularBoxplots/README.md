@@ -1,7 +1,4 @@
 # CircularBoxplots
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/jdberlinski/CircularBoxplots/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jdberlinski/CircularBoxplots/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 ## Overview
 * The function `CircularBoxplots::GroupedCircularBoxplot(x)` creates a grouped circular boxplot from the list of
