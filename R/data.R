@@ -16,7 +16,7 @@
 #' of a multi-tissue response to time-restricted feeding in mammals.
 #' Cell Metabolism 35(1):150-164.e4
 #'
-#' @source \href{https://doi.org/10.1016/j.cmet.2022.12.006}
+#' @source <https://doi.org/10.1016/j.cmet.2022.12.006>
 "deota"
 
 #' Wind direction
@@ -42,6 +42,5 @@
 #'
 #' @usage data(wind_direction)
 #'
-#'
-#' @source Iowa State University's Iowa Environmental Mesonet \href{https://mesonet.agron.iastate.edu/request/download.phtml}
+#' @source Iowa State University's Iowa Environmental Mesonet <https://mesonet.agron.iastate.edu/request/download.phtml>
 "wind_direction"
