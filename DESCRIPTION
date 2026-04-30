@@ -1,6 +1,6 @@
 Package: CircularBoxplots
 Title: Grouped Boxplots for Circular Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     c(person("Josh", "Berlinski", email = "jdberlinski@gmail.com", role = c("aut", "cre")),
     person("Fan", "Dai", role = "aut", email = "fand@mtu.edu"))
