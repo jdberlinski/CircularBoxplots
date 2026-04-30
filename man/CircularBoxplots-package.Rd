@@ -4,12 +4,17 @@
 \name{CircularBoxplots-package}
 \alias{CircularBoxplots}
 \alias{CircularBoxplots-package}
-\title{CircularBoxplots: Grouped Circular Boxplots for Circular Data}
+\title{CircularBoxplots: Grouped Boxplots for Circular Data}
 \description{
-Create grouped boxplots for comparison of circular data across groups.
+Plotting functions to create circular boxplots for grouped data. The primary 2-dimensional version creates concentric circular boxplots for specified groups, scaling the width of each boxplot to adjust for human perception. The 3-dimensional version maps these plots onto a torus which is suitable for periodic circular data such as wind direction over the course of a year. An example dataset of this type is provided for reference. For examples of circular boxplots and additional implementation details, see Berlinski et al. (2026) \doi{10.48550/arXiv.2602.05335}.
 }
 \author{
-\strong{Maintainer}: Josh Berlinski \email{josh.berlinski@gmail.com} (Fan Dai <fand@mtu.edu> [aut])
+\strong{Maintainer}: Josh Berlinski \email{jdberlinski@gmail.com}
+
+Authors:
+\itemize{
+  \item Fan Dai \email{fand@mtu.edu}
+}
 
 }
 \keyword{internal}

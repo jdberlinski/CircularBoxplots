@@ -257,7 +257,7 @@ GroupedCircularBoxplot.3D <- function(
 
       pxy = draw.circle.xy(0,0,tmp_seq[curr_seq])
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
-                  type = "p", col = "gray85",pch = 20, size = 0.8,add = T)
+                  type = "p", col = "gray85",pch = 20, size = 0.8,add = TRUE)
 
       # label the directions
       lab_coord <- cbind(
@@ -294,7 +294,7 @@ GroupedCircularBoxplot.3D <- function(
       rgl::points3d(cos(set_1_circ)*tmp_seq[curr_seq],
                     sin(set_1_circ)*tmp_seq[curr_seq],
                     z_seq[curr_seq],
-                    cex=2, pch=8, add = T)
+                    cex=2, pch=8, add = TRUE)
     }
     # is this bad?
     round_circ <- function(x) circular::rad(round(circular::deg(x))) # round to nearest degree
@@ -449,23 +449,23 @@ GroupedCircularBoxplot.3D <- function(
         rgl::points3d(cos(faroutvalues)*tmp_seq[curr_seq],
                       sin(faroutvalues)*tmp_seq[curr_seq],
                       z_seq[curr_seq],
-                      cex=2, col="white", add = T)
+                      cex=2, col="white", add = TRUE)
 
         rgl::points3d(cos(faroutvalues)*tmp_seq[curr_seq],
                       sin(faroutvalues)*tmp_seq[curr_seq],
                       z_seq[curr_seq],
-                      cex=2, pch=8, add = T)
+                      cex=2, pch=8, add = TRUE)
         }else {
         if (minimal) {
           rgl::points3d(cos(faroutvalues)*tmp_seq[curr_seq],
                         sin(faroutvalues)*tmp_seq[curr_seq],
                         z_seq[curr_seq],
-                        cex=2, size=5.5, pch=8, col="gray30", add = T)
+                        cex=2, size=5.5, pch=8, col="gray30", add = TRUE)
           }else {
             rgl::points3d(cos(faroutvalues)*tmp_seq[curr_seq],
                    sin(faroutvalues)*tmp_seq[curr_seq],
                    z_seq[curr_seq],
-                   cex=2, size=5.5, pch=8, col="gray30", add = T)
+                   cex=2, size=5.5, pch=8, col="gray30", add = TRUE)
         }
       }
     } else {
@@ -543,7 +543,7 @@ GroupedCircularBoxplot.3D <- function(
                                   center=c(0,0), grid.seq[i])
         rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
                type = "l", col = plot_cols[curr_seq],lwd = 2,
-               cex = .3, pch = 20, add=T)
+               cex = .3, pch = 20, add=TRUE)
       }
 
       # median
@@ -551,7 +551,7 @@ GroupedCircularBoxplot.3D <- function(
                                 center = c(0,0), CTM)
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
              type = "l", col = line_cols[curr_seq],lwd = 4,
-             cex = .3, pch = 20, add=T)
+             cex = .3, pch = 20, add=TRUE)
 
       # arc outlines of box
       pxy = draw.arc.xy(0, 0, tmp + 0.1*size_ctrl, grid[1], grid[2])
@@ -559,25 +559,25 @@ GroupedCircularBoxplot.3D <- function(
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start, end, center = c(0, 0, z_seq[curr_seq]),
             radius = tmp + 0.1*size_ctrl,
-            lwd = 2, add = T)
+            lwd = 2, add = TRUE)
 
       pxy = draw.arc.xy(0, 0, tmp - 0.1*size_ctrl, grid[1], grid[2])
       start = c(pxy$x1[1], pxy$y1[1], z_seq[curr_seq])
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start,end,center = c(0, 0, z_seq[curr_seq]),
             radius = tmp - 0.1*size_ctrl,
-            lwd = 2, add = T)
+            lwd = 2, add = TRUE)
 
       # endpoint outlines of box
       pxy = draw.radial.line.xy(tmp - 0.1*size_ctrl, tmp + 0.1*size_ctrl,
                                 center=c(0,0), grid[1])
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
-             type = "l", col = 1, lwd = 2, cex = .3, add=T)
+             type = "l", col = 1, lwd = 2, cex = .3, add=TRUE)
 
       pxy = draw.radial.line.xy(tmp - 0.1*size_ctrl, tmp + 0.1*size_ctrl,
                                 center=c(0,0), grid[2])
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
-             type = "l", col = 1, lwd = 2, cex = .3, add=T)
+             type = "l", col = 1, lwd = 2, cex = .3, add=TRUE)
 
       # whiskers
       pxy = draw.arc.xy(0,0, tmp_seq[curr_seq], wC,QClock)
@@ -585,26 +585,26 @@ GroupedCircularBoxplot.3D <- function(
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start,end,center = c(0, 0, z_seq[curr_seq]),
             radius = tmp_seq[curr_seq],
-            lwd = 2, add = T)
+            lwd = 2, add = TRUE)
 
       # endpoints of whiskers
       pxy = draw.radial.line.xy(tmp_seq[curr_seq]-0.05, 0.05 + tmp_seq[curr_seq],
                                 center=c(0,0),wC)
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
              type = "l", col = 1, lwd = 2,
-             cex = .3, add=T)
+             cex = .3, add=TRUE)
 
       pxy = draw.arc.xy(0, 0, tmp_seq[curr_seq], wA,QAnti)
       start = c(pxy$x1[1], pxy$y1[1], z_seq[curr_seq])
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start,end,center = c(0, 0, z_seq[curr_seq]),
             radius = tmp_seq[curr_seq],
-            lwd = 2, add = T)
+            lwd = 2, add = TRUE)
 
       pxy = draw.radial.line.xy(tmp_seq[curr_seq]-0.05, 0.05 + tmp_seq[curr_seq],
                                 center=c(0,0),wA)
       rgl::plot3d(pxy$x, pxy$y, z_seq[curr_seq],
-             type = "l", col = 1, lwd = 2, cex = .3, add=T)
+             type = "l", col = 1, lwd = 2, cex = .3, add=TRUE)
     }else {
       # draw the quartile boxplot
 
@@ -614,14 +614,14 @@ GroupedCircularBoxplot.3D <- function(
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start,end,center = c(0, 0, z_seq[curr_seq]),
             radius = tmp_seq[curr_seq],
-            col="gray90", lty=1, lwd = 2, add = T)
+            col="gray90", lty=1, lwd = 2, add = TRUE)
 
       pxy = draw.arc.xy(0, 0, tmp_seq[curr_seq], wA,QAnti)
       start = c(pxy$x1[1], pxy$y1[1], z_seq[curr_seq])
       end = c(pxy$x2[pxy$n], pxy$y2[pxy$n], z_seq[curr_seq])
       rgl::arc3d(start,end,center = c(0, 0, z_seq[curr_seq]),
             radius = tmp_seq[curr_seq],
-            col="gray90", lty=1, lwd = 2, add = T)
+            col="gray90", lty=1, lwd = 2, add = TRUE)
 
       # "box" as radial line
       pxy = draw.arc.xy(0, 0, tmp_seq[curr_seq], grid[1], grid[2])
@@ -633,13 +633,13 @@ GroupedCircularBoxplot.3D <- function(
       }
       rgl::arc3d(start,end,center = c(0,0,z_seq[curr_seq]),
                  radius = tmp_seq[curr_seq],
-                 col=plot_cols[curr_seq], lwd = lwd, add = T)
+                 col=plot_cols[curr_seq], lwd = lwd, add = TRUE)
 
       # median point
       rgl::points3d(cos(CTM)*tmp_seq[curr_seq],
                     sin(CTM)*tmp_seq[curr_seq],
                     z_seq[curr_seq],
-                    cex=2, col=line_cols[curr_seq], add = T)
+                    cex=2, col=line_cols[curr_seq], add = TRUE)
     }
 
     gradi <- (as.matrix(circular::deg(data[,1])))
@@ -653,7 +653,7 @@ GroupedCircularBoxplot.3D <- function(
                      sin(as.numeric(CTM))*0.7*torus.R,
                      z_seq[curr_seq])
       rgl::arrow3d(c(0,0,0), arrow.end,
-              width = 0.15, s = 0.15, col = arrow_cols[curr_seq], add = T)
+              width = 0.15, s = 0.15, col = arrow_cols[curr_seq], add = TRUE)
     }
 
     ## output object

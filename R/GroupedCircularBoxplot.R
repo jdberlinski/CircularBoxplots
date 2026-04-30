@@ -41,6 +41,8 @@
 #' @param center_point Logical, should a point be drawn at the center of the grouped circular boxplot
 #' @param cex numerical, the size of the plotting character, also adjusts other characters relatively
 #' @param mex numerical, the size of the character in the margins.
+#' @return A list of lists containing the circular median, hinges, and whiskers
+#' for each of the groups in the dataset, invisibly.
 #' @examples
 #' library(circular)
 #' library(CircularBoxplots)
@@ -630,5 +632,4 @@ GroupedCircularBoxplot <- function(
   if (center_point)
     points(0,0,pch=21, bg=1,  cex=1.1) # redraw center point, for fun
   return(invisible(summary_output))
-
 }

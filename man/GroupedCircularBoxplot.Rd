@@ -90,6 +90,10 @@ at fence points will also not be drawn}
 
 \item{mex}{numerical, the size of the character in the margins.}
 }
+\value{
+A list of lists containing the circular median, hinges, and whiskers
+for each of the groups in the dataset, invisibly.
+}
 \description{
 Given a named list of circular objects, create a grouped circular boxplot.
 }
