@@ -45,7 +45,6 @@
 #' for each of the groups in the dataset, invisibly.
 #' @examples
 #' library(circular)
-#' library(CircularBoxplots)
 #' set.seed(123)
 #' data <- list(
 #'     x = rvonmises(100, circular(pi), 5),
@@ -109,6 +108,9 @@ GroupedCircularBoxplot <- function(
   summary_output <- vector(mode = "list", length = n_seq)
   names(summary_output) <- names(data_in)
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar), add = TRUE)
+
   for (curr_seq in 1:n_seq) {
     A <- data_in[[curr_seq]]
     delta <- shift_val[curr_seq]
@@ -127,10 +129,6 @@ GroupedCircularBoxplot <- function(
       q0035    <- circular::qvonmises((0.007/2), mu=circular::circular(0),kappa = conc)
       constant <- range(c(q9965,q3))/box
     }
-
-    # TODO: find some way to reset the graphics parameters without nuking layouts
-    oldpar <- par(no.readonly = TRUE)
-    on.exit(par(oldpar))
 
     if (marg == "small")
       par(oma=c(0,0,0,0))

@@ -50,12 +50,15 @@ at fence points will also not be drawn}
 
 \item{scale_widths}{Logical, should the width of each boxplot be scaled based on (the square root of) it's distance from the center?}
 }
+\value{
+A list of lists containing the circular median, hinges, and whiskers
+for each of the groups in the dataset, invisibly.
+}
 \description{
 Given a named list of circular objects, create a grouped circular boxplot.
 }
 \examples{
 library(circular)
-library(CircularBoxplots)
 set.seed(123)
 data <- list(
     x = rvonmises(100, circular(pi), 5),

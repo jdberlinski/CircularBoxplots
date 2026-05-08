@@ -8,7 +8,7 @@
 An object of class \code{list} of length 2.
 }
 \source{
-\url{doi:10.1016/j.cmet.2022.12.006}
+\doi{10.1016/j.cmet.2022.12.006}
 }
 \usage{
 data(deota)

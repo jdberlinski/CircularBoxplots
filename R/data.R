@@ -16,7 +16,7 @@
 #' of a multi-tissue response to time-restricted feeding in mammals.
 #' Cell Metabolism 35(1):150-164.e4
 #'
-#' @source <doi:10.1016/j.cmet.2022.12.006>
+#' @source \doi{10.1016/j.cmet.2022.12.006}
 "deota"
 
 #' Wind direction

@@ -107,9 +107,10 @@ draw.circle.xy <- function(x,y,radius,nv=100,border=NULL,density=NULL,angle=45) 
 #' @param minimal Logical. If true, a quartile boxplot is created with simple colored line and point will replace the box and median line. Radial lines
 #' at fence points will also not be drawn
 #' @param scale_widths Logical, should the width of each boxplot be scaled based on (the square root of) it's distance from the center?
+#' @return A list of lists containing the circular median, hinges, and whiskers
+#'   for each of the groups in the dataset, invisibly.
 #' @examples
 #' library(circular)
-#' library(CircularBoxplots)
 #' set.seed(123)
 #' data <- list(
 #'     x = rvonmises(100, circular(pi), 5),
@@ -157,6 +158,9 @@ GroupedCircularBoxplot.3D <- function(
   summary_output <- vector(mode = "list", length = n_seq)
   names(summary_output) <- names(data_in)
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar), add = TRUE)
+
   # build torus mesh
   torus.R <- 0.8; torus.r <- 0.2
   n.ring <- n_seq + 1 # at least four vertices for three groups
@@ -190,10 +194,6 @@ GroupedCircularBoxplot.3D <- function(
       q0035    <- circular::qvonmises((0.007/2), mu=circular::circular(0),kappa = conc)
       constant <- range(c(q9965,q3))/box
     }
-
-    # TODO: find some way to reset the graphics parameters without nuking layouts
-    oldpar <- par(no.readonly = TRUE)
-    on.exit(par(oldpar))
 
     if (marg == "small"){
       par(oma=c(0,0,0,0))}else if (marg == "large"){
